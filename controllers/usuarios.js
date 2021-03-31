@@ -5,8 +5,8 @@ const Usuario = require('../models/usuario');
 
 const usuariosGet = async (req = request, res = response) => {
     
-    const {limite = 5, desde = 0} = req.query;
-    const query = {status: true};
+    const {limite = 5, desde = 0, status = true} = req.query;
+    const query = {status};
 
     // const usuarios = await Usuario.find(query)
     //     .skip(Number(desde))
@@ -73,13 +73,16 @@ const usuariosPatch = (req, res = response) => {
 const usuariosDelete = async (req, res = response) => {
 
     const {id} = req.params;
+    // const uid = req.uid;
 
     // Eliminar fisicamente
     // const usuario = await Usuario.findByIdAndDelete(id);
     const usuario = await Usuario.findByIdAndUpdate( id, {status: false}, {new: true});
 
+    // const usaurioAutenticado = req.usuario;
     res.json({
         usuario
+        // usaurioAutenticado
     });
 }
 

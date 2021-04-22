@@ -14,7 +14,7 @@ const { roleValido, mailExiste, usuarioExiste } = require('../helpers/db-validat
 const { validarCampos, 
         validarJWT,
         esAdminRole,
-        tieneRole } = require('../middlewares')
+        tieneRole } = require('../middlewares');
 
 const router = Router();
 

@@ -51,6 +51,14 @@ const productoDuplicado = async (namedb = '') => {
     }
 }
 
+const coleccionesPermitidas = (coleccion = '', colecciones = []) => {
+    const incluida = colecciones.includes(coleccion);
+    if(!incluida){
+        throw new Error(`La colección ${coleccion} no es permitida, solo se permiten ${colecciones}.`);
+    }
+    return true;
+}
+
 module.exports = {
     roleValido,
     mailExiste,
@@ -58,4 +66,5 @@ module.exports = {
     categoriaExiste,
     productoExiste,
     productoDuplicado,
+    coleccionesPermitidas,
 }
